@@ -46,6 +46,38 @@ public class Work
 	public String toString() {
 		return "Work [workId=" + workId + ", category=" + category + ", user=" + user + "]";
 	}
+
+	public String getWorkId() {
+		return workId;
+	}
+
+	public void setWorkId(String workId) {
+		this.workId = workId;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public List<String> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<String> tasks) {
+		this.tasks = tasks;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	
 	

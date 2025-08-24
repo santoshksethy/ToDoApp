@@ -2,14 +2,12 @@ package com.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.app.entity.Work;
 import com.app.service.IService;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MainController 
@@ -53,22 +51,30 @@ public class MainController
 		return "signup";
 	}
 	
-//	@PostMapping("/signup")
-//	public String checkOut()
-//	{
-//		return "otpVerification";
-//	}
-	
+
 	@GetMapping("/forgotPW")
 	public String forgotPassword()
 	{
 		return "forgotPW";
 	}
 	
-//	@PostMapping("verifyOTP")
-//	public String verifyOTP(@RequestParam("otp") String enteredOTP,Model model,HttpSession session)
-//	{
-//		return service.verifyOTP(enteredOTP);
-//	}
+	@PostMapping("/addTarget")
+    public String addTarget(@ModelAttribute Work target) {
+        // Spring will automatically bind the form data to the Target object
+        System.out.println("Category: " + target.getCategory());
+        System.out.println("Tasks: " + target.getTasks());
+        
+        String storeWork = service.storeWork(target);
+        // Your business logic here
+        if(storeWork.equals("success"))
+        {
+        	return "redirect:/success";// redirect to success page
+        }
+        else
+        {
+        	return "redirect:/failed";
+        }
+    }
+
 
 }

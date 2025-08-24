@@ -1,7 +1,8 @@
 package com.app.service;
 
-public interface IService 
-{
-	String verifyOTP(String OTP);
+import com.app.entity.Work;
 
+public interface IService
+{
+	public String storeWork(Work work);
 }
